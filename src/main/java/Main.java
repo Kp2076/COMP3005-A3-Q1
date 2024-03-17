@@ -11,9 +11,11 @@ public class Main {
     private static final String user = "postgres";
     private static final String password = "postgre";
     public static void main(String[] args) {
-        //getAllStudents();
-        //addStudent("Mary", "Smith", "MSmith009@gmail.com", java.sql.Date.valueOf("2009-12-19"));
-        //updateStudentEmail(13, "MarySmith.912@outlook.com");
+        //Comment out functions you are not using at the moment
+        getAllStudents();
+        addStudent("Mary", "Smith", "MSmith009@gmail.com", java.sql.Date.valueOf("2009-12-19"));
+        updateStudentEmail(13, "MarySmith.912@outlook.com");
+        //Replace the parameter in deleteStudent with whatever student_id is assigned to the record you want to delete.
         deleteStudent(14);
     }
 
