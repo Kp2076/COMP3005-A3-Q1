@@ -1,7 +1,5 @@
 # COMP3005-A3-Q1
 
-Name: Kien Pham
-
 Video Link: https://youtu.be/2J0YuY9c3Bo
 
 Explanation of functions:
