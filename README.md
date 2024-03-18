@@ -65,10 +65,8 @@ from the menu.
 this application. 
 * When deleting a student record, check in pgadmin4 for the student_id and add that integer to parameter for deleteStudent function.
 
-* Replace the function parameters for functions in the main class for addStudent(), updateStudentEmail() and deleteStudent()
-with whatever you wish to add, such as addStudent("Winnie", "Pooh", "WinnieThePooh@gmail.com", java.sql.Date.valueOf("2009-12-19"))
-or updateStudentEmail(10, "ThePDogReturnsToWarg@outlook.com") for the updateStudentEmail function.
+* The application will prompt you to enter values like first and last name as well as student_id to delete and update.
 
 * As you add, update and delete records within the application, you will see it affect the students table in pgadmin4, although you may need to
-SQL command: SELECT * FROM students; in the query if the result does not appear in the result output.Or you can simply run the
+run the command 'SQL command: SELECT * FROM students;' in the query in pgadmin4 if the result does not appear in the result output. Or you can simply run the
 getAllStudents function in the main class everytime you run one of the other functions to determine if the functions work as intended.
