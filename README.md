@@ -2,6 +2,8 @@
 
 Video Link: https://youtu.be/2J0YuY9c3Bo
 
+For this application I will be using IntelliJ IDEA.
+
 Explanation of functions:
 
     getAllStudents():
