@@ -24,27 +24,47 @@ Explanation of functions:
         This functions uses the student_id parameter to identify which record to delete in the students
         table using the SQL syntax DELETE and WHERE.
 
-Instructions to run:
- Open pgadmin4 and create database schema name students with the fields:
-    student_id: Integer, Primary Key, Auto-increment
-    first_name: Text, Not Null
-    last_name: Text, Not Null
-    email: Text, Not Null, Unique
-    enrollment_date: Date
 
-And insert the initial data:
-    INSERT INTO students (first_name, last_name, email, enrollment_date) VALUES
-    ('John', 'Doe', 'john.doe@example.com', '2023-09-01'),
-    ('Jane', 'Smith', 'jane.smith@example.com', '2023-09-01'),
-    ('Jim', 'Beam', 'jim.beam@example.com', '2023-09-02');
+Prerequisite:
+    Ensure you have installed:
+        IntelliJ IDEA
+        Java Development Kit 21 or 17(JDK)
+        PostgreSQL
+        pgadmin4
 
-To test this application, within the main class, there are four functions: getAllStudents(),
-addStudent(first_name, last_name, email, enrollment_date), updateStudentEmail(student_id, new_email), and
-deleteStudent(student_id).
-Simply hit the play button by the public class Main { and select the option 'Run Main.main()' to run the program
+Database set up:
+    1.Open pgadmin4
+    2.Create a PostgreSQL database name Assignment 3 in pgadmin4
+    3.Create the students table in database:
+        CREATE TABLE students (
+            student_id SERIAL PRIMARY KEY,
+            first_name TEXT NOT NULL,
+            last_name TEXT NOT NULL,
+            email TEXT NOT NULL UNIQUE,
+            enrollment_date DATE
+        );
+    4. Insert data into the table:
+        INSERT INTO students (first_name, last_name, email, enrollment_date) VALUES
+        ('John', 'Doe', 'john.doe@example.com', '2023-09-01'),
+        ('Jane', 'Smith', 'jane.smith@example.com', '2023-09-01'),
+        ('Jim', 'Beam', 'jim.beam@example.com', '2023-09-02');
+    
+Compiling and Running with IntelliJ IDEA:
+    1. With IntelliJ IDEA, it automatically compiles your project, but you can manually compile it be selecting 'Build Project'
+    from the menu.
+    2. To run the application, right-click on the play button beside the line 'public class Main {' and select 'Run 'Main.main()''.
+    3. IntelliJ IDEA then will execute the application.
+    
+    
+
+
+
+Very important is to comment out any functions in the public static void main(String[] args) that you are not using when testing 
+this application. When deleting a student record, check in pgadmin4 for the student_id and add that integer to parameter for deleteStudent function.
+
 Replace the function parameters for functions in the main class for addStudent(), updateStudentEmail() and deleteStudent()
 with whatever you wish to add, such as addStudent("Winnie", "Pooh", "WinnieThePooh@gmail.com", java.sql.Date.valueOf("2009-12-19"))
 or updateStudentEmail(10, "ThePDogReturnsToWarg@outlook.com") for the updateStudentEmail function.
-As you add, update and delete records within the application, you will see it affect the students table in pgadmin4 although you may need to
+As you add, update and delete records within the application, you will see it affect the students table in pgadmin4, although you may need to
 SQL command: SELECT * FROM students; in the query if the result does not appear in the result output.Or you can simply run the
 getAllStudents function in the main class everytime you run one of the other functions to determine if the functions work as intended.
