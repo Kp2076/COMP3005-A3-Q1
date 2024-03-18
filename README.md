@@ -1,6 +1,6 @@
 # COMP3005-A3-Q1
 
-Video Link: https://youtu.be/2J0YuY9c3Bo
+Video Link: https://youtu.be/mJdw2Ws5yaQ
 
 For this application I will be using IntelliJ IDEA.
 
