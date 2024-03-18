@@ -3,6 +3,11 @@ import java.sql.DriverManager;
 import java.sql.*;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
+import java.text.SimpleDateFormat;
+import java.util.Scanner;
+import java.text.ParseException;
+import java.util.Date;
+
 
 
 public class Main {
@@ -11,12 +16,50 @@ public class Main {
     private static final String user = "postgres";
     private static final String password = "postgre";
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the student id to which you wish to update email: ");
+        int updateStudentEmail = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Enter the student id to delete student record of the id: ");
+        int deleteStudent = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Enter first name: ");
+        String first_name = scanner.nextLine();
+
+        System.out.println("Enter last name: ");
+        String last_name = scanner.nextLine();
+
+        System.out.println("Enter email: ");
+        String email = scanner.nextLine();
+
+        System.out.println("Enter new email that you wish to update: ");
+        String updateEmail = scanner.nextLine();
+
+        System.out.println("Enter enrollment date(yyyy-MM-dd): ");
+        String enrollment_date = scanner.nextLine();
+
+        java.sql.Date enrollmentDate = null;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date date = sdf.parse(enrollment_date); // Parse to java.util.Date
+            enrollmentDate = new java.sql.Date(date.getTime()); // Convert to java.sql.Date
+        } catch (ParseException e) {
+            System.out.println("Invalid date format. Please use yyyy-MM-dd.");
+            scanner.close();
+            return; // Exit the method or ask for input again
+        }
         //Comment out functions you are not using at the moment
         getAllStudents();
-        addStudent("Mary", "Smith", "MSmith009@gmail.com", java.sql.Date.valueOf("2009-12-19"));
-        updateStudentEmail(13, "MarySmith.912@outlook.com");
+        addStudent(first_name, last_name, email, enrollmentDate);
+        getAllStudents();
+        updateStudentEmail(updateStudentEmail, updateEmail);
+        getAllStudents();
         //Replace the parameter in deleteStudent with whatever student_id is assigned to the record you want to delete.
-        deleteStudent(14);
+        deleteStudent(deleteStudent);
+        getAllStudents();
     }
 
     public static void getAllStudents() {
@@ -86,7 +129,7 @@ public class Main {
                 pstmt.setString(1, first_name);
                 pstmt.setString(2, last_name);
                 pstmt.setString(3, email);
-                pstmt.setDate(4, enrollment_date);
+                pstmt.setDate(4, new java.sql.Date(enrollment_date.getTime()));
                 //pstmt.executeUpdate(); executes the update to the table
                 pstmt.executeUpdate();
                 System.out.println("Student added to students table.");
@@ -129,7 +172,7 @@ public class Main {
             } else {
                 System.out.println("Student id: " + student_id + " does not exist.");
             }
-        // These catch functions are mainly used to handle exceptions
+            // These catch functions are mainly used to handle exceptions
         } catch (ClassNotFoundException e) {
             System.out.println("PostgreSQL JDBC Driver not found.");
             e.printStackTrace();
