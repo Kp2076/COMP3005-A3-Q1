@@ -16,6 +16,7 @@ public class Main {
     private static final String user = "postgres";
     private static final String password = "postgre";
     public static void main(String[] args) {
+        getAllStudents();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter the student id to which you wish to update email: ");
@@ -63,6 +64,8 @@ public class Main {
     }
 
     public static void getAllStudents() {
+        System.out.println();
+        System.out.println("Display all records of students------------------");
         /*The try block is best for catching exceptions. It will allow the code to run but when an error
         occurs, it will catch the exception and output the error for the user to identify and correct.
         */
@@ -110,6 +113,8 @@ public class Main {
     }
 
     public static void addStudent(String first_name, String last_name, String email, Date enrollment_date) {
+        System.out.println();
+        System.out.println("Insert a new student record to the students table------------------");
         //Set the connection to the database to null so that the user can determine if the connection was made
         Connection connection = null;
         // Set to null to avoid any NullPointerException
@@ -147,6 +152,8 @@ public class Main {
     }
 
     public static void updateStudentEmail( int student_id, String new_email) {
+        System.out.println();
+        System.out.println("Updates the email address for the student with the specified id------------------");
         //Set the connection to the database to null so that the user can determine if the connection was made
         Connection connection = null;
         // Set to null to avoid any NullPointerException
@@ -183,6 +190,8 @@ public class Main {
     }
 
     public static void deleteStudent(int student_id) {
+        System.out.println();
+        System.out.println("Delete student record from the students table------------------");
         //Set the connection to the database to null so that the user can determine if the connection was made
         Connection connection = null;
         // Set to null to avoid any NullPointerException
