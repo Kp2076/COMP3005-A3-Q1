@@ -122,8 +122,13 @@ public class Main {
             pstmt.setString(1,new_email);
             pstmt.setInt(2, student_id);
             //Executes the update to the table
-            pstmt.executeUpdate();
-            System.out.println("Data updated.");
+            int recordsAffected = pstmt.executeUpdate();
+
+            if (recordsAffected > 0) {
+                System.out.println("Student id: " + student_id + ", updated.");
+            } else {
+                System.out.println("Student id: " + student_id + " does not exist.");
+            }
         // These catch functions are mainly used to handle exceptions
         } catch (ClassNotFoundException e) {
             System.out.println("PostgreSQL JDBC Driver not found.");
@@ -155,8 +160,13 @@ public class Main {
             pstmt.setInt(1, student_id);
 
             // Execute the delete operation
-            pstmt.executeUpdate();
-            System.out.println("Student id: " + student_id + ", deleted.");
+            int recordsAffected = pstmt.executeUpdate();
+
+            if (recordsAffected > 0) {
+                System.out.println("Student id: " + student_id + ", deleted.");
+            } else {
+                System.out.println("Student id: " + student_id + " does not exist.");
+            }
             // These catch functions are mainly used to handle exceptions
         } catch (ClassNotFoundException e) {
             System.out.println("PostgreSQL JDBC Driver not found.");
