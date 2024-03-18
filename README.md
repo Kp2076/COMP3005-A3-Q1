@@ -63,7 +63,8 @@ from the menu.
 ### Details to note when running the application:
 * Very important is to comment out any functions in the public static void main(String[] args) that you are not using when testing 
 this application. 
-* When deleting a student record, check in pgadmin4 for the student_id and add that integer to parameter for deleteStudent function.
+* When deleting a student record, check in pgadmin4 data output or the results from getAllStudents() function in the terminal output for the correct
+student id.
 
 * The application will prompt you to enter values like first and last name as well as student_id to delete and update.
 
